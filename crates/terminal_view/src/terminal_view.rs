@@ -1290,7 +1290,7 @@ impl Render for TerminalView {
                 MouseButton::Right,
                 cx.listener(|this, event: &MouseDownEvent, window, cx| {
                     if !this.terminal.read(cx).mouse_mode(event.modifiers.shift) {
-                        if this.terminal.last_content.selection.is_none() {
+                        if this.terminal.read(cx).last_content.selection.is_none() {
                             this.expand_selection_around_cursor(event, window, cx);
                         };
                         this.deploy_context_menu(event.position, window, cx);
